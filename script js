@@ -1,9 +1,9 @@
-const targetDate = new Date('2025-07-02T00:00:00'); // target monthsarry date
+const targetDate = new Date('2025-07-02T00:00:00');
 
 const images = [
-  'IMG_20250517_183130_954.jpg',
-  'IMG_20231230_215111_163.webp',
-  'IMG_20250514_122958_694.jpg'
+  'IMG_8817.JPG',
+  'IMG_8818.JPG',
+  ''
 ];
 
 const countdownDiv = document.getElementById('countdown');
@@ -14,9 +14,13 @@ function updateCountdown() {
   const now = new Date();
 
   if (now >= targetDate) {
-    // Hide countdown and message, show only slideshow
     countdownDiv.style.display = 'none';
-    messageDiv.style.display = 'none';
+
+    // Show the love message 💖
+    messageDiv.textContent = 'Happy 18th Monthsarry, lovey! Iloveyouyyyy 💖';
+    messageDiv.style.display = 'block';
+
+    // Start slideshow
     startSlideshow();
     return;
   }
@@ -24,7 +28,6 @@ function updateCountdown() {
   const diff = targetDate - now;
   const daysLeft = Math.ceil(diff / (1000 * 60 * 60 * 24));
   countdownDiv.textContent = `${daysLeft} day(s) left`;
-  countdownDiv.style.display = 'block';
   messageDiv.style.display = 'none';
   slideshowDiv.innerHTML = '';
 }
@@ -36,6 +39,8 @@ function startSlideshow() {
   if (slideshowInterval) return;
 
   slideshowDiv.innerHTML = '';
+
+  // Add images to slideshow
   images.forEach((src, index) => {
     const img = document.createElement('img');
     img.src = src;
@@ -44,7 +49,6 @@ function startSlideshow() {
   });
 
   const slides = slideshowDiv.querySelectorAll('img');
-
   slideshowInterval = setInterval(() => {
     slides[currentSlide].classList.remove('active');
     currentSlide = (currentSlide + 1) % slides.length;
@@ -52,5 +56,6 @@ function startSlideshow() {
   }, 3000);
 }
 
+// Initial call + hourly check
 updateCountdown();
 setInterval(updateCountdown, 1000 * 60 * 60);
