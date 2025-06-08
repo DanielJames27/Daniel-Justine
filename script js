@@ -1,9 +1,9 @@
 const targetDate = new Date('2025-07-02T00:00:00');
 
 const images = [
-  'IMG_8817.JPG',
-  'IMG_8818.JPG',
-  ''
+  'IMG_20250514_122958_694.jpg',
+  'IMG_20231230_215111_163.webp',
+  'IMG_20250517_183130_954.jpg'
 ];
 
 const countdownDiv = document.getElementById('countdown');
